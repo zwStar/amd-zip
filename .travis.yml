@@ -12,8 +12,8 @@ jobs:
 
       deploy:
         provider: npm
-        email: '$npm_email'
-        api_key: '$npm_key'
+        email: '979904565@qq.com'
+        api_key: "$NPM_TOKEN"
         skip_cleanup: true
         on:
           tags: true
