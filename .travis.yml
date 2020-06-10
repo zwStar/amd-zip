@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - node
+
+stages:
+  - test
+  - name: deploy
+
+jobs:
+  include:
+    - stage: deploy
+
+      deploy:
+        provider: npm
+        email: '$npm_email'
+        api_key: '$npm_key'
+        skip_cleanup: true
+        on:
+          tags: true
