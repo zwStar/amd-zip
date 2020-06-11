@@ -1,6 +1,6 @@
 {
   "name": "@zwg/adm-zip",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "nodejs、javascript、文件压缩、文件解压、zip、unzip、解决文件压缩中文乱码",
   "scripts": {
     "test": "mocha test/mocha.js test/crc/index.js"
