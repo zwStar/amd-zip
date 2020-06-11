@@ -8,6 +8,8 @@ stages:
 jobs:
   include:
     - stage: deploy
+     script:
+       - echo "NPM Deploying Started ..."
 
       deploy:
         provider: npm
