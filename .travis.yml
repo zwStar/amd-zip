@@ -3,7 +3,6 @@ node_js:
   - node
 
 stages:
-  - test
   - name: deploy
 
 jobs:

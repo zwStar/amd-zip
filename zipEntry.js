@@ -192,15 +192,24 @@ module.exports = function (/*Buffer*/input) {
 
 
     return {
-        get entryName () { return _entryName.toString(); },
-        get rawEntryName() { return _entryName; },
-        set entryName (val) {
-            var decode = 'utf-8';
-            var chardet = Utils.Chardet(val);
+        get entryName () {
+            var encode = 'utf-8';
+            var chardet = Utils.Chardet(_entryName);
             if (chardet && chardet.encoding.toUpperCase() === 'GB2312') {
-                decode = 'GBK'
+                encode = 'GBK'
             }
-            _entryName = iconv.decode(val, decode);
+            return iconv.decode(_entryName, encode) 
+        },
+        get rawEntryName() {
+            var encode = 'utf-8';
+            var chardet = Utils.Chardet(_entryName);
+            if (chardet && chardet.encoding.toUpperCase() === 'GB2312') {
+                encode = 'GBK'
+            }
+            return iconv.decode(_entryName, encode)
+        },
+        set entryName (val) {
+            _entryName = Utils.toBuffer(val);
             var lastChar = _entryName[_entryName.length - 1];
             _isDirectory = (lastChar === 47) || (lastChar === 92);
             _entryHeader.fileNameLength = _entryName.length;
