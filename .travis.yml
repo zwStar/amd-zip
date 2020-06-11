@@ -16,5 +16,3 @@ jobs:
         email: '979904565@qq.com'
         api_key: "$NPM_TOKEN"
         skip_cleanup: true
-        on:
-          tags: true
