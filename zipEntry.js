@@ -193,20 +193,14 @@ module.exports = function (/*Buffer*/input) {
 
     return {
         get entryName () {
-            var encode = 'utf-8';
             var chardet = Utils.Chardet(_entryName);
-            if (chardet && chardet.encoding.toUpperCase() === 'GB2312') {
-                encode = 'GBK'
-            }
-            return iconv.decode(_entryName, encode) 
+            var encode = Utils.encode(chardet);
+            return iconv.decode(_entryName, encode);
         },
         get rawEntryName() {
-            var encode = 'utf-8';
             var chardet = Utils.Chardet(_entryName);
-            if (chardet && chardet.encoding.toUpperCase() === 'GB2312') {
-                encode = 'GBK'
-            }
-            return iconv.decode(_entryName, encode)
+            var encode = Utils.encode(chardet);
+            return iconv.decode(_entryName, encode);
         },
         set entryName (val) {
             _entryName = Utils.toBuffer(val);

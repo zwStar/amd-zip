@@ -97,12 +97,9 @@ module.exports = function (/**String*/input) {
 			if (item) {
 				var data = item.getData();
                 if (data && data.length) {
-                    var encode = 'utf-8';
-                    let chardet = Utils.Chardet(data);
-                    if (chardet && chardet.encoding.toUpperCase() === 'GB2312') {
-                        encode = 'GBK'
-                    }
-                    return iconv.decode(data, encode);
+					var chardet = Utils.Chardet(data);
+					var encode = Utils.encode(chardet);
+					return iconv.decode(data, encode);
                 }
 			}
 			return "";
@@ -126,11 +123,8 @@ module.exports = function (/**String*/input) {
 					}
 
 					if (data && data.length) {
-						var encode = 'utf-8';
-	                    let chardet = Utils.Chardet(data);
-	                    if (chardet && chardet.encoding.toUpperCase() === 'GB2312') {
-	                        encode = 'GBK'
-	                    }
+						var chardet = Utils.Chardet(data);
+						var encode = Utils.encode(chardet);
 						callback(iconv.decode(data, encode));
 					} else {
 						callback("");

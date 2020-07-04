@@ -220,6 +220,13 @@ module.exports = (function() {
                 return jschardet.detect(val);
             }
             return {};
+        },
+        encode: function (chardet) {
+            var encode = 'GBK';
+            if (chardet && chardet.encoding.toUpperCase() === 'UTF-8') {
+                encode = 'utf-8'
+            }
+            return encode;
         }
     }
 })();

@@ -14,7 +14,7 @@ $ npm install @zwg/adm-zip
 ```
 
 ```
-var AdmZip = require('adm-zip');
+var AdmZip = require('@zwg/adm-zip');
 
 	// reading archives
 	var zip = new AdmZip("./my_file.zip");
