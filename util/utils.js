@@ -223,7 +223,7 @@ module.exports = (function() {
         },
         encode: function (chardet) {
             var encode = 'GBK';
-            if (chardet && chardet.encoding.toUpperCase() === 'UTF-8') {
+            if (chardet && chardet.encoding && chardet.encoding.toUpperCase() === 'UTF-8') {
                 encode = 'utf-8'
             }
             return encode;
